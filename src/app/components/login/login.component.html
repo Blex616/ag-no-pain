@@ -19,7 +19,7 @@
         <!-- Register -->
         <p>¿No estas registrado?
           <br>
-          <button mdbBtn color="blue" (click)="basicModal.show()" mdbWavesEffect>Registrate</button>
+          <button mdbBtn color="blue" (click)="showModal(); basicModal.show()" mdbWavesEffect>Registrate</button>
         </p>
       </form>
       <!-- Default form login -->
@@ -39,16 +39,27 @@
       </div>
       <div class="modal-body">
         
-        <input type="text" [(ngModel)]="identification" name="identification" class="form-control mb-4"
+        <input type="text" [(ngModel)]="modelUser.identification" name="identification" class="form-control mb-4"
           placeholder="Identificación">
 
-        <input type="text" [(ngModel)]="firstName" name="firstName" class="form-control mb-4"
+        <input type="text" [(ngModel)]="modelUser.firstName" name="firstName" class="form-control mb-4"
           placeholder="Nombre">
 
-        <input type="text" [(ngModel)]="lastName" name="lastName" class="form-control mb-4"
+        <input type="text" [(ngModel)]="modelUser.lastName" name="lastName" class="form-control mb-4"
           placeholder="Apellido">
         
-        <input type="password" [(ngModel)]="password" name="password" class="form-control mb-4" placeholder="Contraseña">
+        <input type="password" [(ngModel)]="modelUser.password" name="password" class="form-control mb-4" placeholder="Contraseña">
+
+        <label>Seleciona una ciudad</label>
+        <select class="browser-default custom-select" name="citySave" (change)="getHquarters($event.target)">
+          <option selected disabled value="">Selecciona</option>
+          <option *ngFor="let item of citiesModal" value="{{item.id}}">{{item.name}}</option>
+        </select>
+        <label>Seleciona una sede</label>
+        <select class="browser-default custom-select" [(ngModel)]="modelUser.headquarter" name="hquarterSave">
+          <option selected disabled value="">Selecciona</option>
+          <option *ngFor="let item of hquartersLoop" value="{{item.id}}">{{item.name}}</option>
+        </select>
       </div>
       <div class="modal-footer">
         <button type="button" mdbBtn color="red" class="waves-light" aria-label="Close"

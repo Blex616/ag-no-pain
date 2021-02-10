@@ -24,6 +24,11 @@ export class UserService {
     return this.httpClient.get<any>(this.functions.urlWhithParams('users', environment.urlServer, paramsUrl), { headers })
   }
 
+  usersHquarter(paramsUrl?: any) {
+    let headers = new HttpHeaders({ 'Authorization': this.functions.getJwtWithKey() });
+    return this.httpClient.get<any>(this.functions.urlWhithParams('users/hquarter', environment.urlServer, paramsUrl), { headers })
+  }
+
   userById(paramsUrl?: any) {
     let headers = new HttpHeaders({ 'Authorization': this.functions.getJwtWithKey() });
     return this.httpClient.get<any>(this.functions.urlWhithParams('user/getuser', environment.urlServer, paramsUrl), { headers })

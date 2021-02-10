@@ -1,35 +1,81 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h3>Usuarios</h3>
-            <table mdbTable striped="true" bordered="true">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Identificación</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Rol</th>
-                        <th scope="col">Sede</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr mdbTableCol *ngFor="let item of usersLoop">
-                        <th scope="row">{{item.id}}</th>
-                        <td>{{item.identification}}</td>
-                        <td>{{item.firstName}}</td>
-                        <td>{{item.lastName}}</td>
-                        <td>{{item.role}}</td>
-                        <td>{{item.headquarter.name}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <div class="box-footer">
-                <button mdbBtn color="primary" type="button">
-                    Crear
-                </button>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Usuarios</h3>
+      <table mdbTable striped="true" bordered="true">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Identificación</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Sede</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let item of usersLoop">
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.identification}}</td>
+            <td>{{item.firstName}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.role}}</td>
+            <td>{{item.headquarter ? item.headquarter.name : 'No aplica'}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <div class="box-footer">
+        <button mdbBtn color="primary" type="button" (click)="showModal(); basicModal.show()">
+          Crear
+        </button>
+      </div>
     </div>
+  </div>
+</div>
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Registrar Usuario</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" [(ngModel)]="modelUser.identification" name="identification" class="form-control mb-4"
+          placeholder="Identificación">
+        <input type="text" [(ngModel)]="modelUser.firstName" name="firstName" class="form-control mb-4"
+          placeholder="Nombre">
+        <input type="text" [(ngModel)]="modelUser.lastName" name="lastName" class="form-control mb-4"
+          placeholder="Apellido">
+        <input type="text" [(ngModel)]="modelUser.password" name="password" class="form-control mb-4"
+          placeholder="Contraseña">
+        <label>Seleciona un Rol</label>
+        <select class="browser-default custom-select" [(ngModel)]="modelUser.role" name="role">
+          <option selected disabled value="">Selecciona</option>
+          <option value="USER">Usuario comun</option>
+          <option value="ADMIN">Administrador</option>
+        </select>
+        <label>Seleciona una ciudad</label>
+        <select class="browser-default custom-select" name="citySave" (change)="getHquarters($event.target)">
+          <option selected disabled value="">Selecciona</option>
+          <option *ngFor="let item of citiesModal" value="{{item.id}}">{{item.name}}</option>
+        </select>
+        <label>Seleciona una sede</label>
+        <select class="browser-default custom-select" [(ngModel)]="modelUser.headquarter" name="hquarterSave">
+          <option selected disabled value="">Selecciona</option>
+          <option *ngFor="let item of hquartersLoop" value="{{item.id}}">{{item.name}}</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="red" class="waves-light" aria-label="Close" (click)="basicModal.hide()"
+          mdbWavesEffect>Cerrar</button>
+        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect
+          (click)="saveUser(); basicModal.hide();">Guardar</button>
+      </div>
+    </div>
+  </div>
 </div>

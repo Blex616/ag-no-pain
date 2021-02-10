@@ -55,7 +55,7 @@ export class Functions {
         return tokenAuth
     }
 
-    getJwtWithKey(suffix = 'jwt') {
+    getJwtWithKey(suffix = '') {
         return `${suffix} ${this.authorization()}`
     }
 
