@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Sedes</h3>
+            <table mdbTable striped="true" bordered="true">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Ciudad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr mdbTableCol *ngFor="let item of hquartersLoop">
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.name}}</td>
+                        <td>{{item.city.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div class="box-footer" *ngIf="this.userInfo.role == 'ADMIN'">
+                <button mdbBtn color="primary" type="button">
+                    Crear
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

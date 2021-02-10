@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Ciudades</h3>
+            <table mdbTable striped="true" bordered="true">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr mdbTableCol *ngFor="let item of citysLoop">
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div class="box-footer">
+                <button mdbBtn color="primary" type="button">
+                    Crear
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

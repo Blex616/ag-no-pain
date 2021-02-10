@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Usuarios</h3>
+            <table mdbTable striped="true" bordered="true">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Identificación</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Sede</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr mdbTableCol *ngFor="let item of usersLoop">
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.identification}}</td>
+                        <td>{{item.firstName}}</td>
+                        <td>{{item.lastName}}</td>
+                        <td>{{item.role}}</td>
+                        <td>{{item.headquarter.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div class="box-footer">
+                <button mdbBtn color="primary" type="button">
+                    Crear
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

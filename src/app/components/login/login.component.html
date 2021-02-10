@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Default form login -->
+      <form class="text-center border border-light p-5">
+
+        <p class="h4 mb-4">Inicio de sesion</p>
+
+        <!-- Identification -->
+        <input type="text" [(ngModel)]="identification" name="identification" class="form-control mb-4" placeholder="Identificación">
+
+        <!-- Password -->
+        <input type="password" [(ngModel)]="password" name="password"  class="form-control mb-4" placeholder="Contraseña">
+
+
+        <!-- Sign in button -->
+        <button mdbBtn color="info" block="true" class="my-4" (click)="login()">Iniciar sesion</button>
+
+        <!-- Register -->
+        <p>¿No estas registrado?
+          <br>
+          <button mdbBtn color="blue" (click)="basicModal.show()" mdbWavesEffect>Registrate</button>
+        </p>
+      </form>
+      <!-- Default form login -->
+    </div>
+  </div>
+</div>
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Registro</h4>
+      </div>
+      <div class="modal-body">
+        
+        <input type="text" [(ngModel)]="identification" name="identification" class="form-control mb-4"
+          placeholder="Identificación">
+
+        <input type="text" [(ngModel)]="firstName" name="firstName" class="form-control mb-4"
+          placeholder="Nombre">
+
+        <input type="text" [(ngModel)]="lastName" name="lastName" class="form-control mb-4"
+          placeholder="Apellido">
+        
+        <input type="password" [(ngModel)]="password" name="password" class="form-control mb-4" placeholder="Contraseña">
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="red" class="waves-light" aria-label="Close"
+          (click)="basicModal.hide()" mdbWavesEffect>Cerrar</button>
+        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect (click)="register()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
