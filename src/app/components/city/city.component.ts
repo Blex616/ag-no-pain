@@ -41,6 +41,9 @@ export class CityComponent implements OnInit {
     } else {
       this.cityService.saveCity(null, this.cityModel).subscribe(res => {
         this.citysLoop = res.cities;
+        this.cityModel = {
+          "name": ""
+        }
         alertify.success("Guardado correctamente");
       },
         err => {

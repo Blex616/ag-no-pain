@@ -74,6 +74,10 @@ export class HquarterComponent implements OnInit {
     } else {
       this.hquarterService.saveHquarter(null, this.modelHquarter).subscribe(res => {
         this.hquartersLoop = res.hquarters;
+        this.modelHquarter = {
+          "name": "",
+          "city": ""
+        }
         alertify.success("Guardado correctamente");
       },
         err => {

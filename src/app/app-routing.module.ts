@@ -9,7 +9,7 @@ import { CanActivateViaAuthGuard } from '../utils/can-activate-via-auth-guard'
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'user', component: UserComponent },
+  { path: 'user', component: UserComponent, canActivate: [CanActivateViaAuthGuard] },
   { path: 'city', component: CityComponent, canActivate: [CanActivateViaAuthGuard] },
   { path: 'hquarter', component: HquarterComponent, canActivate: [CanActivateViaAuthGuard] }
 ];

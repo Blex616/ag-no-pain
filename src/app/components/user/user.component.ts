@@ -84,6 +84,13 @@ export class UserComponent implements OnInit {
     } else {
       this.userService.saveUser(null, this.modelUser).subscribe(res => {
         this.usersLoop = res.users;
+        this.modelUser = {
+          "identification": '',
+          "password": '',
+          "firstName": '',
+          "lastName": '',
+          "role": 'USER'
+        };
         alertify.success("Guardado correctamente");
       },
         err => {
