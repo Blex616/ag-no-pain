@@ -20,8 +20,6 @@ export class AppComponent {
     this.checkLogin();
     this.authorization = this.functions.authorization();
     this.userInfo = this.authorization ? this.functions.decodedJwt(this.authorization) : {}
-    console.log(this.showOption)
-    console.log(this.userInfo)
   }
 
   logout() {
